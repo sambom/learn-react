@@ -1,3 +1,6 @@
+import { IngredientListProps, RecipeProps } from "@/types/recipe";
+
+
 export const recipes = [{
   id: 'greek-salad',
   name: 'Greek Salad',
@@ -16,7 +19,28 @@ export default function RecipeList() {
   return (
     <div>
       <h1>Recipes</h1>
-      {}
+      {recipes.map(recipe => (
+        <Recipe key={recipe.id} {...recipe} />
+      ))}
     </div>
+  );
+}
+
+function Recipe(recipe: RecipeProps) {
+  return (
+    <div>
+      <h2>{recipe.name}</h2>
+      <IngredientList ingredients={recipe.ingredients} />
+    </div>
+  );
+}
+
+function IngredientList({ ingredients }: IngredientListProps) {
+  return (
+    <ul>
+      {Array.from(ingredients).map(ingredient => (
+        <li key={ingredient}>{ingredient}</li>
+      ))}
+    </ul>
   );
 }

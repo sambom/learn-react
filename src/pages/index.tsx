@@ -10,6 +10,6 @@ import List from "./qcomps/list_keys_id"
 
 export default function Home() {
   return (
-    <List />
+    <RecipeList />
   )
 }
