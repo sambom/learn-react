@@ -8,11 +8,14 @@ import RecipeList from "./qcomps/recipes"
 //import Gallery from "./qcomps/gallery_props"
 import List from "./qcomps/list_keys_id"
 import Gallery from "./qcomps/state"
-import Form from "./qcomps/stuckForm"
+//import Form from "./qcomps/stuckForm"
 import ShoppingCart from "./qcomps/shoppingCart"
+import Form from "./qcomps/updObjectsForm"
+import Artist from "./qcomps/artistsRemoveArr"
+import BucketList from "./qcomps/arrObj"
 
 export default function Home() {
   return (
-    <ShoppingCart />
+    <BucketList />
   )
 }
