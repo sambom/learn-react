@@ -2,7 +2,15 @@ import { useState } from 'react';
 import { ItemListProps } from '../../types/arrObj';
 
 let nextId = 3;
-const initialList = [
+
+type Artwork = {
+  id: number;
+  title: string;
+  seen: boolean;
+};
+
+
+const initialList: Artwork[] = [
   { id: 0, title: 'Big Bellies', seen: false },
   { id: 1, title: 'Lunar Landscape', seen: false },
   { id: 2, title: 'Terracotta Army', seen: true },
@@ -15,23 +23,26 @@ export default function BucketList() {
   );
 
   function handleToggleMyList(artworkId: number, nextSeen: boolean) {
-    const tmpList = myList.map(e => {
-        if (e.id === artworkId) {
-            e.seen = nextSeen
-        }
-        return e
-    });
+    const tmpList = toggleList(myList, artworkId, nextSeen);
     setMyList(tmpList);
   }
 
   function handleToggleYourList(artworkId: number, nextSeen: boolean) {
-    const tmpList = yourList.map(e => {
+    const tmpList = toggleList(yourList, artworkId, nextSeen);
+    setYourList(tmpList);
+  }
+
+
+  function toggleList(artworkList: Artwork[], artworkId: number, nextSeen: boolean) {
+
+    const tmpList = artworkList.map(e => {
         if (e.id === artworkId) {
-            e.seen = nextSeen
+            return {...e , seen: nextSeen}
         }
         return e
     });
-    setYourList(tmpList);
+    return tmpList;
+
   }
 
   return (
